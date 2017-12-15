@@ -1,6 +1,9 @@
 'use strict';
 
+import PropTypes from 'prop-types';
+
 var React = require('react');
+const createReactClass = require('create-react-class');
 var {
   View,
   StyleSheet,
@@ -40,30 +43,30 @@ var styles = StyleSheet.create({
 
 });
 
-var ModalBox = React.createClass({
+var ModalBox = createReactClass({
 
   propTypes: {
-    isOpen: React.PropTypes.bool,
-    isDisabled: React.PropTypes.bool,
-    startOpen: React.PropTypes.bool,
-    backdropPressToClose: React.PropTypes.bool,
-    swipeToClose: React.PropTypes.bool,
-    swipeThreshold: React.PropTypes.number,
-    swipeArea: React.PropTypes.number,
-    position: React.PropTypes.string,
-    entry: React.PropTypes.string,
-    backdrop: React.PropTypes.bool,
-    backdropOpacity: React.PropTypes.number,
-    backdropColor: React.PropTypes.string,
-    backdropContent: React.PropTypes.element,
-    animationDuration: React.PropTypes.number,
-    backButtonClose: React.PropTypes.bool,
-    easing: React.PropTypes.func,
-    coverScreen: React.PropTypes.bool,
+    isOpen: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    startOpen: PropTypes.bool,
+    backdropPressToClose: PropTypes.bool,
+    swipeToClose: PropTypes.bool,
+    swipeThreshold: PropTypes.number,
+    swipeArea: PropTypes.number,
+    position: PropTypes.string,
+    entry: PropTypes.string,
+    backdrop: PropTypes.bool,
+    backdropOpacity: PropTypes.number,
+    backdropColor: PropTypes.string,
+    backdropContent: PropTypes.element,
+    animationDuration: PropTypes.number,
+    backButtonClose: PropTypes.bool,
+    easing: PropTypes.func,
+    coverScreen: PropTypes.bool,
 
-    onClosed: React.PropTypes.func,
-    onOpened: React.PropTypes.func,
-    onClosingState: React.PropTypes.func,
+    onClosed: PropTypes.func,
+    onOpened: PropTypes.func,
+    onClosingState: PropTypes.func,
   },
 
   getDefaultProps: function () {
@@ -276,7 +279,7 @@ var ModalBox = React.createClass({
     var closingState = false;
     var inSwipeArea  = false;
 
-    var onPanRelease = (evt, state) => {
+    var onPanRelease = (evt, state) => {
       if (!inSwipeArea) return;
       inSwipeArea = false;
       if (this.props.entry === 'top' ? -state.dy > this.props.swipeThreshold : state.dy > this.props.swipeThreshold)
@@ -460,3 +463,4 @@ var ModalBox = React.createClass({
 });
 
 module.exports = ModalBox;
+
